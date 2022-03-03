@@ -1,0 +1,27 @@
+{
+  "name": "doodle-examples",
+  "version": "1.0.0",
+  "description": "A repo with quite the amount of doodle css. I just love this tool",
+  "main": "server.js",
+  "dependencies": {
+    "css-doodle": "^0.25.2",
+    "webpack": "^5.69.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SYUMJOBA/Doodle-examples.git"
+  },
+  "author": "SYUMJOBA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SYUMJOBA/Doodle-examples/issues"
+  },
+  "homepage": "https://github.com/SYUMJOBA/Doodle-examples#readme"
+}

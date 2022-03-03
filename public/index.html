@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Some Noice Patterns</title>
+</head>
+<body>
+    <style>
+        :root{
+            --empty : #0000;
+        }
+        body{
+            margin: 0px;
+            overflow-x: hidden;
+        }
+        body::-webkit-scrollbar{
+            color: var(--empty);
+            width: 0px;
+        }
+        body::-webkit-scrollbar-corner{
+            color: var(--empty);
+            width: 0px;
+        }
+        body::-webkit-scrollbar-thumb{
+            color: var(--empty);
+            width: 0px;
+        }
+        body::-webkit-scrollbar-track{
+            color: var(--empty);
+            width: 0px;
+        }
+        body::-webkit-scrollbar-track-piece{
+            color: var(--empty);
+            width: 0px;
+        }
+    </style>
+    <style>
+        css-doodle {
+          --rule: (
+            @grid: 5 / 8em;
+            --d: @p(45deg, -45deg, 135deg, -135deg);
+            --lg: linear-gradient(@var(--d),#60569e 50%,#0000 0);
+            background:
+              @var(--lg) 0 0 / 100% 100%,
+              @var(--lg) 0 0 / 50% 50%;
+          );
+        
+          --rule2: (
+                @grid: 5/ 8em;
+                background: rgb(@r(100, 150), @r(150, 255), @r(200, 255));
+                transform: scale(@r(1));
+                transition: 250ms linear background;
+                :hover {
+                    background: black;
+                    transform: rotate(90deg);
+                }
+          )
+        }
+        @keyframes spinningThing{
+              from{
+                transform: rotate(0deg)
+              }
+              to{
+                transform: rotate(90deg);
+              }
+          }
+    </style>
+    <script src="./bundle.js"></script>
+    <css-doodle>
+        @grid: 50 / 50em;
+        :doodle {
+            background: black;
+        }
+        @random {
+        border-left: 1px solid #5d81bc;
+        }
+        @random {
+        border-top: 1px solid #5d81bc;
+        }
+        @random(.25) {
+        background: linear-gradient(
+            @p(#fff, tan, #5d81bc), @lp
+        )
+        50% / @r(60%) @lr
+        no-repeat;
+        }
+        @random {
+        filter: drop-shadow(0 0 10px #fff);
+        }
+    </css-doodle>
+    <css-doodle grid="5">
+        :doodle {
+          grid-gap: 2px;
+          width: 40em; height: 40em;
+        }
+        background: #60569e;
+    </css-doodle>
+    <css-doodle grid="1x35">
+        :doodle {
+          grid-row-gap: 1px;
+          @size: 8em; /* width: 8em; height: 8em; */
+        }
+        background: #60569e;
+        width: @rand(5%, 100%); /* from 5% to 100% by random */
+    </css-doodle>
+    <css-doodle>
+        :doodle {
+          @grid: 5 / 8em;
+        }
+        background: #60569e;
+        transform: scale(@rand(.2, .9));
+    </css-doodle>
+    <css-doodle use="var(--rule)"></css-doodle>
+    <css-doodle>
+        @grid: 1 / 50em;
+        background-color: #0a0c27;
+        background-size: 200px 200px;
+        background-image: @doodle(
+          @grid: 6 / 100%;
+          @size: 4px;
+          font-size: 4px;
+          color: hsl(@r240, 30%, 50%);
+          box-shadow: @m3x5(
+            calc(4em - @nx * 1em) calc(@ny * 1em)
+              @p(@m3(currentColor), @m2(#0000)),
+            calc(2em + @nx * 1em) calc(@ny * 1em)
+              @lp
+          );
+        );
+    </css-doodle>
+    <css-doodle use="var(--rule2)"></css-doodle>
+    <div class="someDiv"></div>
+    <div class="otherDiv"></div>
+    <style>
+        .someDiv{
+            background: rgb(red, green, blue);
+            opacity: 0;
+            background: red;
+            width: 1em;
+            height: 1em;
+            transition: opacity 230ms ease-in-out;
+        }
+
+        .someDiv:hover{
+            opacity: 1;
+        }
+        
+        .otherDiv{
+            width: 3em;
+            height: 3em;
+            animation: spinner 4s infinite linear;
+        }
+
+        @keyframes spinner {
+            from {
+                transform: rotate(0deg);
+            }
+            25%{
+                background: aqua;
+            }
+            50%{
+                background: blueviolet;
+            }
+            75%{
+                background: red;
+            }
+            100%{
+                background: yellow;
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+
+    <css-doodle>
+        :doodle {
+            @grid: 5 / 8em;
+        }
+        background-color: rgb(@r(255), @r(255), @r(255));
+        transition: 250ms linear all;
+        :hover{
+            background: red;
+            transform: translateX(@r(20));
+        }
+    </css-doodle>
+    <css-doodle>
+        :doodle {
+            background: #001022;
+        }
+        @grid: 16 / 320px;
+
+        @size: 1px calc(141.4% + 1px);
+        transform: rotate(@p(±45deg));
+        background: #AEACFB;
+        margin: auto;
+    </css-doodle>
+
+    <css-doodle>
+        :doodle{
+            background: linear-gradient(#444, #111 20%, #000);
+        }
+        @grid: 32 / 64em;
+        @random(0.75){
+            border-top: 2px solid white;
+        }
+        @random(0.75){
+            border-left: 2px solid white;
+        }
+        @random(){
+            transform: scale(@r(0.1, 0.4));
+            background-color: white;
+            filter: drop-shadow(0 0 30px #fff);
+        }
+        :hover{
+            filter: drop-shadow(0 0 0px);
+        }
+        transition: 250ms linear filter;
+
+    </css-doodle>
+</body>
+</html>
