@@ -180,10 +180,10 @@
         :doodle {
             @grid: 5 / 8em;
         }
-        background-color: rgb(@r(255), @r(255), @r(255));
+        background-color: rgb(@r(200), @r(200), @r(200));
         transition: 250ms linear all;
         :hover{
-            background: red;
+            background: rgb(@r(200, 255), @r(200, 255), @r(200, 255));
             transform: translateX(@r(20));
         }
     </css-doodle>
@@ -198,7 +198,23 @@
         background: #AEACFB;
         margin: auto;
     </css-doodle>
+    <css-doodle>
+        :doodle {
+            @grid: 5 / 8em;
+            --s: 0;
+            grid-gap: 2px;
+          }
+          :doodle(:hover) {
+            --s: 5;
+          }
+          --offset: calc(var(--s) * 100%);
+          transform: translateX(var(--offset)) rotate(calc(var(--s) * 18deg));
+          transition: .5s cubic-bezier(.175, .885, .32, 1.275);
+          transition-delay: @rand(500ms);
 
+          transform-origin: 50% 50%;
+          background: #60569e;
+    </css-doodle>
     <css-doodle>
         :doodle{
             background: linear-gradient(#444, #111 20%, #000);
